@@ -1,0 +1,57 @@
+Readmission Prediction 
+By Daniel Gordon
+
+
+In the following we will create a model that predict readmission within 30
+days after hospitalization. That can be used to optimize health care
+services while saving money by focusing on patients with readmission
+prediction. For that end, we are going to apply several classification
+techniques. Although we achieved decision tree model with 99% accuracy
+and no mistake on confusion matrix, we advise to try and optimize the
+number of features involved in the process as for now the model is pretty
+hard to interpret.
+Data
+We are using readmission unbalanced data set from health care data base
+which include almost 14,000 samples and 92 features. That data has already
+been cleaned, checked for Nulls, and normalized but we did double check.
+Due to the nature of the data, the features named has been replaced to
+. However, all the features are health related.
+We then preformed features correlation analysis with the target variable
+and obtain the following 15 best features
+
+X1 to X92
+Models
+Using Stratified Shuffle Split we insure the same balance on both the train
+and test set. Then we preformed logistic regression, support vector
+machine and decision tree and obtain great results with 99% succus on test
+set with the following decision tree
+
+Logistic Regression:
+After train and test splitting, we trained logistic regression models
+with ,regularizations, and cross validation over the train set. We
+then predict on the test value and obtain both accuracy table and confusion
+matrix
+
+lr, l
+1, l2
+Support Vector Machine:
+After train and test splitting, we trained grid search cv on SVM model with
+cross validation over multiple kernels, gammas values, and C values. To
+ensure recall and good precision, we set the scoring to f1. We achieved the
+best model for the polynomial kernel and f1 score of 0.72 for the
+readmission class and long fitting time. We then changed the feature set to
+a smaller set and have been able to stay with the same f1 score but only 15
+best correlated features instead of 92 features.
+
+Decision Tree:
+Last but not least, after train and test splitting, we trained grid search cv
+on decision tree model with cross validation over multiple parameters. We
+recall that this model is the best model for the job with 99% success.
+ 
+As we can see, we get our best estimator for max depth=11. Note that
+the scoring method is accuracy but since we obtain success on every
+matrix score, we are not worried. Indeed,
+
+We are furthermore can visualize the decision tree as follow (for better
+visualization )
+ 
